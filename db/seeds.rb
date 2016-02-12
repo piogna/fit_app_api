@@ -1,7 +1,6 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+workout = Workout.new(date: Date.today)
+we = WorkoutExercise.new(order: 1, exercise_name: "Some Exercise")
+se = ExSet.new(order: 1, weight: 10, reps: 10)
+we.ex_sets << se
+workout.workout_exercises << we
+workout.save
