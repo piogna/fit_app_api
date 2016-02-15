@@ -1,6 +1,8 @@
 class Workout < ActiveRecord::Base
   has_many :workout_exercises, dependent: :destroy
 
+  accepts_nested_attributes_for :workout_exercises
+
   validates :date, presence: true
 
   validate :created_in_past_or_present, :must_have_workout_exercises

@@ -1,5 +1,8 @@
 class WorkoutExercise < ActiveRecord::Base
   has_many :ex_sets, dependent: :destroy
+
+  accepts_nested_attributes_for :ex_sets
+
   belongs_to :workout
 
   validates :order, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 1 }
