@@ -14,6 +14,8 @@ gem 'devise_token_auth'
 
 gem 'active_model_serializers'
 
+gem 'jbuilder'
+
 group :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
