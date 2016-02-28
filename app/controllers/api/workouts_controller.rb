@@ -5,11 +5,7 @@ class Api::WorkoutsController < ApplicationController
 
   def show
     @workout = Workout.includes(workout_exercises: :ex_sets).find_by(id: params[:id])
-    if @workout
-
-    else
-      render status: 404, json: {message: "No such workout found"}
-    end
+    render status: 404, json: {message: "No such workout found"} unless @workout
   end
 
   def create
@@ -17,6 +13,8 @@ class Api::WorkoutsController < ApplicationController
     @workout.assign_attributes(@json['workout'])
     if @workout.save
       render 'api/workouts/show.json'
+    else
+      render status: 400, json: {message: @workout.errors.details}
     end
   end
 end
